@@ -1,5 +1,5 @@
 homepage: "https://www.dashly.io"
 documentation: "https://help.dashly.io/"
 versions:
-  - sha:
+  - sha: 245ed8f3d8d6ca06068d8e28c96764d8d703e72d
     changeNotes: Initial release.
