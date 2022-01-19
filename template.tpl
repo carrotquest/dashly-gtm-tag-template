@@ -33,9 +33,9 @@ ___TEMPLATE_PARAMETERS___
   {
     "type": "TEXT",
     "name": "apiKey",
-    "displayName": "Paste the apiKey of your Dashly account",
+    "displayName": "Paste the website ID",
     "simpleValueType": true,
-    "help": "You could find the apiKey of your Dashly account on the GTM installation page where you came here from. Click \"Copy apiKey\" button."
+    "help": "You could find the website ID on the GTM installation page in the Dashly Starter guide. Click “Copy website ID” button."
   }
 ]
 
@@ -51,7 +51,7 @@ const url = 'https://cdn.dashly.app/api.min.js';
 let dashly = copyFromWindow('dashly');
 
 const onSuccess = () => {
-  callInWindow('dashly.connect', data.apiKey);
+  callInWindow('dashly.connect', data.apiKey, {token_type: 'web_user_gtm'});
   data.gtmOnSuccess();
 };
 
