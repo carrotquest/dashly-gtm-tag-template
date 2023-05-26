@@ -1,5 +1,7 @@
 homepage: "https://www.dashly.io"
 documentation: "https://help.dashly.io/"
 versions:
+  - sha: 2f6ff16e0d47ac3fa6db927e12ef6e71bf83c825
+    changeNotes: Fixed a bug with proxying public methods before running the script.
   - sha: 4364a572ae96e7fcf5a1b88617efd27fb7b06a08
     changeNotes: Initial release.
