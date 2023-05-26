@@ -46,6 +46,7 @@ const copyFromWindow = require('copyFromWindow');
 const setInWindow = require('setInWindow');
 const injectScript = require('injectScript');
 const callInWindow = require('callInWindow');
+const createQueue = require('createQueue');
 
 const url = 'https://cdn.dashly.app/api.min.js';
 let dashly = copyFromWindow('dashly');
@@ -62,11 +63,11 @@ const onFailure = () => {
 if ('undefined' == typeof dashly) {
   let func = (t, e) => {
     return function() {
-      dashlyasync.push(t, arguments);
+      dashlyasyncPush(t, arguments);
     };
   };
   
-  const dashlyasync = [];
+  const dashlyasyncPush = createQueue('dashlyasync');
   const publicMethods = ['connect', 'track', 'identify', 'auth', 'onReady', 'addCallback', 'removeCallback', 'trackMessageInteraction'];
   dashly = {
     settings: {}
@@ -77,7 +78,6 @@ if ('undefined' == typeof dashly) {
   }
   
   setInWindow('dashly', dashly, true);
-  setInWindow('dashlyasync', dashlyasync, true);
   
   injectScript(url, onSuccess, onFailure);
 }
